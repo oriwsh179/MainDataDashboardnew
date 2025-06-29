@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="MainDataDashboard.Views.SectionCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <!-- تأثير الظل البديل -->
+        <DropShadowEffect x:Key="CustomShadow" BlurRadius="10" ShadowDepth="3" Opacity="0.2"/>
+
+        <!-- نمط الزر البديل -->
+        <Style x:Key="CustomButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF3F51B5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="0,5"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border CornerRadius="8" Background="White" Margin="10"
+            BorderBrush="#DDDDDD" BorderThickness="1"
+            Effect="{StaticResource CustomShadow}">
+
+        <StackPanel Margin="10">
+            <TextBlock Text="{Binding Title}" 
+                       FontSize="18" 
+                       FontWeight="Bold"
+                       Foreground="#FF3F51B5"/>
+
+            <!-- محتوى الكارت -->
+            <ContentPresenter Content="{Binding}" Margin="0,10,0,0"/>
+
+            <Button Command="{Binding ShowDetailsCommand}"
+                    Content="عرض التفاصيل"
+                    HorizontalAlignment="Left"
+                    Margin="0,10,0,0"
+                    Style="{StaticResource CustomButton}"/>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,57 @@
+﻿<Window x:Class="MainDataDashboard.Views.InformationDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="تفاصيل المعلوماتية" Height="600" Width="800"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.Resources>
+        <!-- أنماط الأزرار -->
+        <Style x:Key="CustomFlatButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FF3F51B5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+        </Style>
+
+        <Style x:Key="CustomRaisedButton" TargetType="Button">
+            <Setter Property="Background" Value="#FF3F51B5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- العنوان -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="تفاصيل قسم المعلوماتية" 
+                       FontSize="20" 
+                       FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- المحتوى -->
+        <ScrollViewer Grid.Row="1" Margin="0,10,0,0">
+            <ItemsControl ItemsSource="{Binding CarStatuses}">
+                <!-- تصميم العناصر -->
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- أزرار التحكم -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="إغلاق"
+                    Command="{Binding CloseCommand}"
+                    Style="{StaticResource CustomFlatButton}"
+                    Margin="0,0,10,0"/>
+
+            <Button Command="{Binding ShowDetailsCommand}"
+                    Content="عرض المزيد"
+                    Style="{StaticResource CustomRaisedButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>
